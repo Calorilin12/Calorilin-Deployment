@@ -5,7 +5,7 @@ services:
   router:
     build:
       context: .
-      dockerfile: ./Dockerfile/Dockerfile-RO
+      dockerfile: Dockerfile
     container_name: calorilin-router
     restart: unless-stopped
     tty: true
@@ -22,7 +22,7 @@ services:
   backend-app:
     build:
       context: .
-      dockerfile: ./Dockerfile/Dockerfile-BE
+      dockerfile: ../Dockerfile-Backend/Dockerfile
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
@@ -33,8 +33,19 @@ services:
   web-app:
     build:
       context: .
-      dockerfile: ./Dockerfile/Dockerfile-FE
-    container_name: calorilin-frontend
+      dockerfile: ../Dockerfile-Frontend/Admin/Dockerfile
+    container_name: calorilin-frontend-admin
+    restart: unless-stopped
+    tty: true
+    networks:
+      - calorilin-network
+
+  # Web Landing Page
+  web-landing-app:
+    build:
+      context: .
+      dockerfile: ../Dockerfile-Frontend/landingpage/Dockerfile
+    container_name: calorilin-frontend-landingpage
     restart: unless-stopped
     tty: true
     networks:

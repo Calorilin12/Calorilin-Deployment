@@ -3,7 +3,7 @@ version: "3.8"
 services:
   # Router
   router:
-    image: REGISTRYDOMAIN/calorilin-router:latest
+    image: mdrahano12/calorilin-router:latest
     container_name: calorilin-router
     restart: unless-stopped
     tty: true
@@ -18,7 +18,7 @@ services:
 
   # Backend Service
   backend-app:
-    image: REGISTRYDOMAIN/calorilin-backend:latest
+    image: mdrahano12/calorilin-backend:latest
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
@@ -27,8 +27,17 @@ services:
 
   # Web Service
   web-app:
-    image: REGISTRYDOMAIN/calorilin-frontend:latest
-    container_name: calorilin-frontend
+    image: mdrahano12/calorilin-frontend-admin:latest
+    container_name: calorilin-frontend-admin
+    restart: unless-stopped
+    tty: true
+    networks:
+      - calorilin-network
+
+  # Web Landing Page
+  web-landing-app:
+    image: mdrahano12/calorilin-frontend-landingpage:latest
+    container_name: calorilin-frontend-landingpage
     restart: unless-stopped
     tty: true
     networks:
@@ -49,7 +58,7 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - calorilin-data:/var/lib/mysql
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      # - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - calorilin-network
 
