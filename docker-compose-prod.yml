@@ -3,7 +3,7 @@ version: "3.8"
 services:
   # Router
   router:
-    image: mdrahano12/calorilin-router:latest
+    image: mdrahano12/calorilin-router:1.0
     container_name: calorilin-router
     restart: unless-stopped
     tty: true
@@ -18,7 +18,7 @@ services:
 
   # Backend Service
   backend-app:
-    image: mdrahano12/calorilin-backend:latest
+    image: mdrahano12/calorilin-backend:1.0
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
@@ -27,7 +27,7 @@ services:
 
   # Web Service
   web-app:
-    image: mdrahano12/calorilin-frontend-admin:latest
+    image: mdrahano12/calorilin-frontend-admin:1.0
     container_name: calorilin-frontend-admin
     restart: unless-stopped
     tty: true
@@ -36,7 +36,7 @@ services:
 
   # Web Landing Page
   web-landing-app:
-    image: mdrahano12/calorilin-frontend-landingpage:latest
+    image: mdrahano12/calorilin-frontend-landingpage:1.0
     container_name: calorilin-frontend-landingpage
     restart: unless-stopped
     tty: true
