@@ -27,7 +27,7 @@ services:
 
   # Web Service
   web-app:
-    image: mdrahano12/calorilin-frontend-admin:1.1
+    image: mdrahano12/calorilin-frontend-admin:1.2
     container_name: calorilin-frontend-admin
     restart: unless-stopped
     tty: true
