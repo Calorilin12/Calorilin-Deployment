@@ -53,10 +53,9 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: calorilin
-      MYSQL__USER: calorilin12
+      MYSQL_USER: calorilin12
       MYSQL_PASSWORD: calorilin1212
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: calorilin1212
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
