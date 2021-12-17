@@ -18,7 +18,7 @@ services:
 
   # Backend Service
   backend-app:
-    image: mdrahano12/calorilin-backend:1.5
+    image: mdrahano12/calorilin-backend:1.6
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
@@ -36,7 +36,7 @@ services:
 
   # Web Landing Page
   web-landing-app:
-    image: mdrahano12/calorilin-frontend-landingpage:1.1
+    image: mdrahano12/calorilin-frontend-landingpage:1.2
     container_name: calorilin-frontend-landingpage
     restart: unless-stopped
     tty: true
