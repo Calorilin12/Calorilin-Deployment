@@ -18,7 +18,7 @@ services:
 
   # Backend Service
   backend-app:
-    image: mdrahano12/calorilin-backend:1.7
+    image: mdrahano12/calorilin-backend:1.8
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
@@ -43,35 +43,34 @@ services:
     networks:
       - calorilin-network
 
-  # Database Service
-  mysql:
-    image: mysql:5.7.32
-    container_name: calorilin-database-mysql
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: calorilin
-      MYSQL_USER: calorilin12
-      MYSQL_PASSWORD: calorilin1212
-      MYSQL_ROOT_PASSWORD: calorilin1212
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
-    volumes:
-      - calorilin-data:/var/lib/mysql
-      # - ./mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - calorilin-network
+  # # Database Service
+  # mysql:
+  #   image: mysql:5.7.32
+  #   container_name: calorilin-database-mysql
+  #   restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_DATABASE: calorilin
+  #     MYSQL_USER: calorilin12
+  #     MYSQL_PASSWORD: calorilin1212
+  #     MYSQL_ROOT_PASSWORD: calorilin1212
+  #     SERVICE_TAGS: dev
+  #     SERVICE_NAME: mysql
+  #   volumes:
+  #     - calorilin-data:/var/lib/mysql
+  #     # - ./mysql/my.cnf:/etc/mysql/my.cnf
+  #   networks:
+  #     - calorilin-network
 
 # Docker Network
 networks:
   calorilin-network:
     driver: bridge
-
-# Volumes
-volumes:
-  certbot-etc:
-  certbot-var:
-  calorilin-data:
-    driver: local
+# # Volumes
+# volumes:
+#   certbot-etc:
+#   certbot-var:
+#   calorilin-data:
+#     driver: local
