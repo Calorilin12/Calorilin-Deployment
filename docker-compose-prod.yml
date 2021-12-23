@@ -18,7 +18,7 @@ services:
 
   # Backend Service
   backend-app:
-    image: mdrahano12/calorilin-backend:1.8
+    image: mdrahano12/calorilin-backend:1.9
     container_name: calorilin-backend
     restart: unless-stopped
     tty: true
