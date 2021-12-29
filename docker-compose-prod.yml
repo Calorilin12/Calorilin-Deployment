@@ -1,20 +1,20 @@
 version: "3.8"
 
 services:
-  # # Router
-  # router:
-  #   image: mdrahano12/calorilin-router:1.0
-  #   container_name: calorilin-router
-  #   restart: unless-stopped
-  #   tty: true
-  #   volumes:
-  #     - certbot-etc:/etc/letsencrypt
-  #     - certbot-var:/var/lib/letsencrypt
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   networks:
-  #     - calorilin-network
+  # Router
+  router:
+    image: mdrahano12/calorilin-router:2.0
+    container_name: calorilin-router
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - calorilin-network
 
   # Backend Service
   backend-app:
@@ -25,10 +25,19 @@ services:
     networks:
       - calorilin-network
 
-  # Web Service
-  web-app:
+  # Web Admin Service
+  web-admin-app:
     image: mdrahano12/calorilin-frontend-admin:1.4
     container_name: calorilin-frontend-admin
+    restart: unless-stopped
+    tty: true
+    networks:
+      - calorilin-network
+
+  # Web User Service
+  web-user-app:
+    image: mdrahano12/calorilin-frontend-user:2.0
+    container_name: calorilin-frontend-user
     restart: unless-stopped
     tty: true
     networks:
@@ -43,34 +52,35 @@ services:
     networks:
       - calorilin-network
 
-  # # Database Service
-  # mysql:
-  #   image: mysql:5.7.32
-  #   container_name: calorilin-database-mysql
-  #   restart: unless-stopped
-  #   tty: true
-  #   ports:
-  #     - "3306:3306"
-  #   environment:
-  #     MYSQL_DATABASE: calorilin
-  #     MYSQL_USER: calorilin12
-  #     MYSQL_PASSWORD: calorilin1212
-  #     MYSQL_ROOT_PASSWORD: calorilin1212
-  #     SERVICE_TAGS: dev
-  #     SERVICE_NAME: mysql
-  #   volumes:
-  #     - calorilin-data:/var/lib/mysql
-  #     # - ./mysql/my.cnf:/etc/mysql/my.cnf
-  #   networks:
-  #     - calorilin-network
+  # Database Service
+  mysql:
+    image: mysql:5.7.32
+    container_name: calorilin-database-mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: calorilin
+      MYSQL_USER: calorilin12
+      MYSQL_PASSWORD: calorilin1212
+      MYSQL_ROOT_PASSWORD: calorilin1212
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - calorilin-data:/var/lib/mysql
+      # - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - calorilin-network
 
 # Docker Network
 networks:
   calorilin-network:
     driver: bridge
-# # Volumes
-# volumes:
-#   certbot-etc:
-#   certbot-var:
-#   calorilin-data:
-#     driver: local
+
+# Volumes
+volumes:
+  certbot-etc:
+  certbot-var:
+  calorilin-data:
+    driver: local
