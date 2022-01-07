@@ -27,7 +27,7 @@ services:
 
   # Web Admin Service
   web-admin-app:
-    image: mdrahano12/calorilin-frontend-admin:2.2
+    image: mdrahano12/calorilin-frontend-admin:2.3
     container_name: calorilin-frontend-admin
     restart: unless-stopped
     tty: true
@@ -36,7 +36,7 @@ services:
 
   # Web User Service
   web-user-app:
-    image: mdrahano12/calorilin-frontend-user:2.2
+    image: mdrahano12/calorilin-frontend-user:2.3
     container_name: calorilin-frontend-user
     restart: unless-stopped
     tty: true
